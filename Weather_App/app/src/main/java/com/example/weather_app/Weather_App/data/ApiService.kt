@@ -6,10 +6,6 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-/**
- * Created by merttoptas on 8.10.2022.
- */
-
 interface ApiService {
     @GET("onecall?lat=41.01&lon=28.97&exclude=hourly,minutely&appid=8ddadecc7ae4f56fee73b2b405a63659&units=metric")
     fun getWeatherIst(): Call<WeatherModel>
