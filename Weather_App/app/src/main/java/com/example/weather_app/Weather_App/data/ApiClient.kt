@@ -8,6 +8,7 @@ class ApiClient {
     companion object {
         private lateinit var apiService: ApiService
 
+        /** Initializing API service **/
         fun getApiService(): ApiService {
 
             if (!Companion::apiService.isInitialized) {

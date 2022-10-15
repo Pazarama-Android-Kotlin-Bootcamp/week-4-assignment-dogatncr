@@ -4,6 +4,7 @@ package com.example.weather_app.Weather_App.model
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 
+/** Data class for notes information with Json conversion feature **/
 data class WeatherModel(
     @SerializedName("current")
     var current: Current?,

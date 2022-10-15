@@ -20,6 +20,8 @@ class WeatherFragment: Fragment(), WeatherListener{
     private lateinit var navController: NavController
     private lateinit var weatherList : MutableList<WeatherModel>
     private lateinit var cityList : MutableList<String>
+
+    /** Creating weather views fragment **/
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +30,7 @@ class WeatherFragment: Fragment(), WeatherListener{
 
     }
 
-    /** Initialized navigation controller and called set up adapter **/
+    /** Initialized navigation controller, created function for getting data for cities and called set up adapter **/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = findNavController()
@@ -127,12 +129,13 @@ class WeatherFragment: Fragment(), WeatherListener{
             }
         })
     }
-
+    /** Setting up adapter for weather recycler view **/
     private fun setupAdapter() {
         weatherRecyclerView.adapter = WeatherAdapter(weatherList, cityList,this)
 
     }
 
+    /** Defining onClick method for weather elements **/
     override fun onClicked(weatherModel: WeatherModel,city:String) {
         navController.navigate(R.id.action_fragment_weather_to_detail, Bundle().apply {
             putString("WeatherModel", weatherModel.toJson())

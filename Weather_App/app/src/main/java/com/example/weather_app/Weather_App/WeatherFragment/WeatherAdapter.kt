@@ -15,13 +15,15 @@ class WeatherAdapter(
     private val CityList: MutableList<String>,
     private val listener: WeatherListener
 ): RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>()  {
+
+    /** creating view holder **/
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
 
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.weather_list_item, parent, false)
         return WeatherViewHolder(view)
     }
-
+    /** binding weather and city elements to the view holder **/
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         holder.bind(WeatherList[position], listener,CityList[position])
     }
@@ -29,7 +31,7 @@ class WeatherAdapter(
     override fun getItemCount(): Int {
         return WeatherList.size
     }
-
+    /** Weather view holder was defined with bind method **/
     class WeatherViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val city = view.findViewById<TextView>(R.id.Location)
         private val highest = view.findViewById<TextView>(R.id.highest)
@@ -53,6 +55,7 @@ class WeatherAdapter(
         }
     }
 }
+/** for noticing and creating reactions when clicked on note **/
 interface WeatherListener {
     fun onClicked(weatherModel: WeatherModel,city :String)
 }
